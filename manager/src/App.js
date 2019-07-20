@@ -11,7 +11,7 @@ import Router from './Router';
 class App extends Component {
     componentWillMount(){
         const firebaseConfig = {
-            apiKey: "AIzaSyCXnzPuagk5aNj5X9aH87nikYJoPIb21og",
+            apiKey: "",
             authDomain: "friendlychat-1bac4.firebaseapp.com",
             databaseURL: "https://friendlychat-1bac4.firebaseio.com",
             projectId: "friendlychat-1bac4",
