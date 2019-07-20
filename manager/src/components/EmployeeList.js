@@ -2,7 +2,7 @@ import React,{ Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { ListView} from 'react-native';
-import { employeesFetch} from '../actions';
+import { employeesFetch } from '../actions';
 import ListItem from './ListItem'; 
 
 
@@ -10,20 +10,24 @@ class EmployeeList extends Component{
     componentWillMount(){
         this.props.employeesFetch(); 
 
+        console.log(this.props.employees);
         this.createDataSource(this.props);
     }
 
     componentWillReceiveProps(nextProps){
 
+        //console.log(nextProps.employees);
         this.createDataSource(nextProps);
     }
 
     createDataSource({ employees }){
+        console.log(employees);
         const ds = new ListView.DataSource({
             rowHasChanged: (r1,r2) => r1!== r2
         });
 
-        this.dataSource = ds.cloneWithRows(employees); 
+        this.dataSource = ds.cloneWithRows(employees);
+        console.log(this.dataSource); 
     }
 
 
@@ -32,7 +36,7 @@ class EmployeeList extends Component{
     }
 
     render() {
-        console.log(this.props);
+        //console.log(this.props);
         return (
             <ListView 
                 enableEmptySections
@@ -47,6 +51,8 @@ const mapStateToProps = state => {
     const employees = _.map(state.employees ,(val ,uid) => {
         return { ...val, uid};
     });
+
+    console.log(employees);
 
     return { employees };
 };
